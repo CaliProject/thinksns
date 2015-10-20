@@ -15,6 +15,7 @@
 ##BeautifyCard:
 ![BeautifyCard](http://ts.calicastle.com/data/upload/2015/0819/23/55d4a54f35fe7.png)
 
-##Beautify
+##BeautifyIndex:
+![BeautifyIndex](http://ts.calicastle.com/data/upload/2015/0821/15/55d6d77166433_660_0.png)
 
 >Made by Cali, contact me if you have any issues: [cali@calicastle.com](mailto:cali@calicastle.com)
