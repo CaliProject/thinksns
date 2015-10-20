@@ -1,7 +1,8 @@
-将文件覆盖到addons/theme/stv1/_static/js/plugins/内
+##将文件覆盖到addons/theme/stv1/_static/js/plugins/内
 
-要想显示正常必须将以下 css 加入自定义 css 中，可通过 UI 美化插件后台 CSS 自定义增加，也可以手动添加到 global.css 内
+>要想显示正常必须将以下 css 加入自定义 css 中，可通过 UI 美化插件后台 CSS 自定义增加，也可以手动添加到 global.css 内
 
+```css
 /*
 * Tooltip
 */
@@ -219,3 +220,4 @@
     -o-transform: translate(-50%, 0px);
     transform: translate(-50%, 0px)
 }
+
