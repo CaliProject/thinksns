@@ -1,0 +1,28 @@
+  <div class="form2">
+    <form method="post" action="{:Addons::adminUrl('saveBeautifyCardConfig')}">
+      <dl class="lineD">
+        <dt>名片背景风格：</dt>
+        <dd>
+            <label><input type="radio" name="color" value="1" <php>if($config['color']==1){</php>checked<php>}</php>/>亮色</label>
+         <label><input type="radio" name="color" value="2" <php>if($config['color']==2 || empty($config['color'])){</php>checked<php>}</php>/>暗色</label>
+        </dd>
+      </dl>
+      <dl class="lineD">
+        <dt>名片背景同步个人主页：</dt>
+        <dd>
+          <label><input type="checkbox" name="isSync" value="1" <php>if($config['isSync']==1) echo 'checked';</php>/>同步</label>
+          <br />
+          <p>默认背景图为头像的高斯模糊，如果希望同步使用个人主页的模板图请打勾</p>
+        </dd>
+      </dl>
+      <dl class="lineD">
+          <dt>是否显示用户勋章：</dt>
+          <dd>
+              <label><input id="consume_c" type="checkbox" name="showMedals" onclick="check_consume($(this))" <php>if($config['showMedals']==1)echo 'checked'; </php>/>显示</label>
+          </dd>
+      </dl>
+      <div class="page_btm">
+        <input type="submit" class="btn_b" value="确定" />
+      </div>
+    </form>
+  </div>

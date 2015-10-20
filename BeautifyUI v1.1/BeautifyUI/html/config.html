@@ -1,0 +1,114 @@
+<link rel="stylesheet" media="screen" type="text/css" href="<php>echo SITE_URL</php>/addons/plugin/BeautifyUI/html/css/colorpicker.css" />
+<script type="text/javascript" src="<php>echo SITE_URL</php>/addons/plugin/BeautifyUI/html/js/colorpicker.js"></script>
+<script type="text/javascript" src="<php>echo SITE_URL</php>/addons/plugin/BeautifyUI/html/js/eye.js"></script>
+<script type="text/javascript" src="<php>echo SITE_URL</php>/addons/plugin/BeautifyUI/html/js/utils.js"></script>
+<script type="text/javascript" src="<php>echo SITE_URL</php>/addons/plugin/BeautifyUI/html/js/layout.js?ver=1.0.2"></script>
+<style>label{float: none !important;height: 25px;line-height: 25px}
+</style>
+ <div class="form2">
+    <form method="post" action="{:Addons::adminUrl('saveBeautifyUIConfig')}">
+     <dl class="lineD">
+         <dt>是否自定义 css?</dt>
+         <dd>
+            <label><input type="radio" onclick="diyChange(1)" name="diy" value="1" <php>if($config['diy']==1){echo 'checked';}</php>>是</label>
+             <label><input type="radio" name="diy" onclick="diyChange(0)" value="0" <php>if($config['diy']==0){echo 'checked';}</php>>否</label>
+         </dd>
+     </dl>
+    <div id="panel-diy">
+         <dl class="lineD">
+             <dt>请填写自定义 CSS 代码：</dt>
+             <dd>
+                 <textarea type="text" name="diy-css" style="width:350px;height:400px;overflow-y:visible">{$config['diy-css']}</textarea>
+             <p>不需要写<code>&lt;style&gt;&lt;/style&gt;</code>标签</p>
+             </dd>
+         </dl>
+     </div>
+     <div id="panel-not-diy">
+      <dl class="lineD">
+        <dt>顶部导航</dt>
+        <br />
+        <dd>
+            <label>背景色:<input type="text" maxlength="6" class="colorpickerField" name="top_nav_bg" value="<php>echo $config['top_nav_bg']?$config['top_nav_bg']:'313131'</php>"/></label>
+          </dd>
+           <dd>
+            <label>字体色:<input type="text" maxlength="6" class="colorpickerField" name="top_nav_a_color" value="<php>echo $config['top_nav_a_color']?$config['top_nav_a_color']:'eeeeee'</php>"/></label>
+            </dd>
+            <dd>
+            <label>选中字体色:<input type="text" maxlength="6" class="colorpickerField" name="top_nav_a_current_color" value="<php>echo $config['top_nav_a_current_color']?$config['top_nav_a_current_color']:'eeee22'</php>"/></label>
+          </dd>
+           <dd>
+            <label>鼠标悬浮底边:<input type="text" maxlength="6" class="colorpickerField" name="top_nav_a_hover_color" value="<php>echo $config['top_nav_a_hover_color']?$config['top_nav_a_hover_color']:'cccccc'</php>"/></label>
+        </dd>
+      </dl>
+      <dl class="lineD">
+        <dt>页底导航</dt>
+        <br />
+        <dd>
+          <label>背景色:<input type="text" maxlength="6" class="colorpickerField" name="bottom_nav_bg" value="<php>echo $config['bottom_nav_bg']?$config['bottom_nav_bg']:'313131'</php>"/></label>
+          </dd>
+          <dd>
+          <label>字体色:<input type="text" maxlength="6" class="colorpickerField" name="bottom_nav_color" value="<php>echo $config['bottom_nav_color']?$config['bottom_nav_color']:'eeeeee'</php>"/></label>
+          </dd>
+          <dd>
+          <label>链接色:<input type="text" maxlength="6" class="colorpickerField" name="bottom_nav_a_color" value="<php>echo $config['bottom_nav_a_color']?$config['bottom_nav_a_color']:'c2665d'</php>"/></label>
+          </dd>
+          <dd>
+          <label>微博关注背景色:<input type="text" maxlength="6" class="colorpickerField" name="bottom_nav_weibo_bg" value="<php>echo $config['bottom_nav_weibo_bg']?$config['bottom_nav_weibo_bg']:'c2c0af'</php>"/></label>
+        </dd>
+      </dl>
+      <dl class="lineD">
+          <dt>顶部搜索框</dt>
+          <br />
+          <dd>
+            <label>背景色:<input type="text" maxlength="6" class="colorpickerField" name="top_nav_search_bg" value="<php>echo $config['top_nav_search_bg']?$config['top_nav_search_bg']:'313131'</php>"/></label>
+          </dd>
+           <dd>
+            <label>字体色:<input type="text" maxlength="6" class="colorpickerField" name="top_nav_search_color" value="<php>echo $config['top_nav_search_color']?$config['top_nav_search_color']:'ffffff'</php>"/></label>
+            </dd>
+           <dd>
+            <label>输入状态边框色:<input type="text" maxlength="6" class="colorpickerField" name="top_nav_search_focus_color" value="<php>echo $config['top_nav_search_focus_color']?$config['top_nav_search_focus_color']:'5d5d5d'</php>"/></label>
+          </dd>
+      </dl>
+      </div>
+
+      <div class="page_btm">
+        <input type="submit" class="btn_b" value="确定" />
+      </div>
+    </form>
+  </div>
+<script type="text/javascript">
+var isDIY = <php>if($config['diy']==1){echo 'true';}else{echo 'false';}</php>;
+if (!isDIY){
+    $('#panel-diy').hide();
+} else {
+    $('#panel-not-diy').hide();
+}
+function diyChange(type){
+    switch(type){
+        case 1:
+            $('#panel-not-diy').hide();
+            $('#panel-diy').show();
+            break;
+        case 0:
+            $('#panel-not-diy').show();
+            $('#panel-diy').hide();
+            break;
+    }
+}
+    
+$('.colorpickerField').ColorPicker({
+    onChange: function(hsb, hex, rgb, el){
+        $(el).val(hex);
+    },
+	onSubmit: function(hsb, hex, rgb, el) {
+		$(el).val(hex);
+		$(el).ColorPickerHide();
+	},
+	onBeforeShow: function () {
+		$(this).ColorPickerSetColor(this.value);
+	}
+})
+.bind('keyup', function(){
+	$(this).ColorPickerSetColor(this.value);
+});
+</script>

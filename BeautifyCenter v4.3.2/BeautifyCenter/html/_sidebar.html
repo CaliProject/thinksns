@@ -1,0 +1,53 @@
+<div id="col3" class="st-index-right">
+   <div class="right-wrap">
+    <php>if($sidebar['sidebar_following_list']['data']){</php>
+        <div class="right-box mb20 clearfix border-b">
+            <h3><a href="{:U('public/Profile/following',array('uid'=>$sidebar['user_info'][$uid]['uid']))}" class="right f12">更多</a><php>if($sidebar['user_info'][$uid]['uid']==$mid){</php>我<php>}else{</php>TA<php>}</php>的关注({$userData.following_count|default=0})</h3>
+            <ul>
+                <volist name="sidebar['sidebar_following_list']['data']" id="vo">
+                    <li><a href="{:U('public/Profile/index',array('uid'=>$vo['fid']))}" class="face" uid="{$vo['fid']}" event-node="face_card"><img src="{$sidebar['user_info'][$vo['fid']]['avatar_small']}" /></a><a href="{:U('public/Profile/index',array('uid'=>$vo['fid']))}" class="face" uid="{$vo['fid']}" event-node="face_card"><span>{$sidebar['user_info'][$vo['fid']]['uname']|getShort=4}</span></a></li>
+                </volist>
+            </ul>
+        </div>
+    <php>}</php>
+    <php>if($sidebar['sidebar_follower_list']['data']){</php>
+        <div class="right-box mb20 clearfix border-b">
+            <h3><a href="{:U('public/Profile/follower',array('uid'=>$sidebar['user_info'][$uid]['uid']))}" class="right f12">更多</a><php>if($sidebar['user_info'][$uid]['uid']==$mid){</php>我<php>}else{</php>TA<php>}</php>的粉丝({$userData.follower_count|default=0})</h3>
+            <ul>
+                <volist name="sidebar['sidebar_follower_list']['data']" id="vo">
+                    <li><a href="{:U('public/Profile/index',array('uid'=>$vo['fid']))}" class="face"><img src="{$sidebar['user_info'][$vo['fid']]['avatar_small']}" uid="{$vo['fid']}" event-node="face_card" /></a><a href="{:U('public/Profile/index',array('uid'=>$vo['fid']))}" class="face" uid="{$vo['fid']}" event-node="face_card"><span>{$sidebar['user_info'][$vo['fid']]['uname']|getShort=4}</span></a></li>
+                </volist>
+            </ul>
+        </div>
+    <php>}</php>
+     <div class="right-box clearfix" model-node="related_list">
+      <fieldset class="inter-line mb20">
+        <span class="right" id="feed_img_count">0张</span>
+        <legend class="inter-txt">分享配图</legend>
+        <input type="hidden" id="feed_max_id" value="0">
+        <input type="hidden" id="feed_min_id" value="0">
+      </fieldset>
+      <div id="feed_img_list"></div>
+    </div>
+    </div>
+</div>
+<script type="text/javascript">
+function get_feed_img(type){
+	var max_id = type==0 ? $('#feed_min_id').val() : $('#feed_max_id').val();
+	var url = "{:U('public/Profile/get_feed_img')}";
+	var uid = "{$uid}";
+	$.post(url,{max_id:max_id,type:type,uid:uid},function(res){
+		res=JSON.parse(res);
+		
+		$('#feed_max_id').val(res.max_id);
+		$('#feed_min_id').val(res.min_id);
+		$('#feed_img_list').html(res.html);
+		$('#feed_img_count').html(res.count+'张');
+	});
+}
+$(function(){
+	$('#feed_min_id').val(0) ;
+	$('#feed_max_id').val(0);
+	get_feed_img(1);
+});
+</script>

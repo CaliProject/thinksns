@@ -1,0 +1,591 @@
+<!-- 头部封面以及用户信息样式 -->
+<style type="text/css">
+.profile-title {margin: 0 0 10px 0;border: none !important}
+.profile_pic_top {height: 300px;position: relative;background-position: center bottom;background-repeat: no-repeat;background-size: cover;}
+.profile_pic_top .pf_badge_icon {position: absolute;bottom: 10px;right: 20px;opacity: 0.7;}
+.profile_pic_top .pf_badge {float: right;display: inline;}
+.S_line1 {border-color: #e0dbd1;}
+.profile_pic_top .badge_list {padding-left: 5px;}
+.profile_pic_top .badge_list li {float: left;display: inline;margin: 0 0 0 7px;}
+.profile_top {position: relative;}
+.SW_fun_btn:hover, .S_bg5 {background-color: #ffffff; box-shadow: 0 0 5px #CCCCCC;}
+.profile_top .pf_info{margin-left: 225px;line-height: 22px;padding-top: 10px;position: relative;}
+    <?php if($preferences['position']==2){
+        echo '.profile_top .pf_head {position: absolute;width: 150px;top: -90px;left: 50%;margin-left: -75px}';
+        echo '.more-box {position: relative;float: left;margin-top: 15px}';
+    } else if ($preferences['position']==1){
+        echo '.profile_top .pf_head {position: absolute;width: 150px;top: -50px;left: 0%;margin-left: 20px}';
+        echo '.person-info-t > dd > div >.left{position: relative;left: 140px;top: 10px}';
+        echo '.more-box{position: relative;float: left;margin-top: 25px;left: 150px}';
+    } else {
+        echo '.profile_top .pf_head {position: absolute;width: 150px;top: -50px;right: 0%;margin-right: 20px}';
+        echo '.person-info-t > dd > div >.left{left: 420px;top: 10px;position: relative}';
+        echo '.more-box {position: relative;float: left;margin-top: 25px;left: 430px;}';
+    } ?>
+.S_bg4{background-color: none;}
+.profile_top .pf_head_pic {padding: 2px;width: 150px;height: 150px;position: relative;}
+.S_line1 {border-color: #e0dbd1;}
+.profile_top .pf_head_pic img {display: block;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;border: 5px solid rgba(255,255,255,0.5);margin-left: -5px;position: relative;transition: all ease-in-out .3s;-webkit-transition: all ease-in-out .3s;-moz-transition: all ease-in-out .3s}
+.profile_top .pf_head_pic img:hover {transform: translateY(-20px);-webkit-transform: translateY(-20px);-moz-transform: translateY(-20px)}
+.profile_top .pf_head_pic .change_btn_div {position: absolute;text-align: right;right: 12px;bottom: 12px;}
+.W_btn_c, .W_btn_c span {cursor: pointer;color: #333;}
+.profile_top .pf_head .user_atten {margin: 5px 0 4px 0;border: 0;padding: 0;line-height: 1.125;width: 184px;position: relative;top: 50px;left: 50%;margin-left: -92px;z-index: 9999;pointer-events: auto}
+.profile_top .pf_head .user_atten li {padding: 0 3px 3px;float: left;border-right-width: 1px;border-right-style: solid;text-align: center;width: 53px;}
+.profile_top .pf_head .user_atten li a {display: block;text-decoration:none;}
+.profile_top .pf_head .user_atten_l li strong {font-size: 20px;}
+.profile_top .pf_head .user_atten li strong {line-height: 20px;display: block;margin-bottom: 5px;font-family: Tahoma;font-weight: 400;}
+.S_func1{color: #3e1e1e;}
+.profile_top .pf_head .user_atten li {text-align: center;}
+.profile_top .pf_head .user_atten .follower {width: 64px;padding: 0 0 3px 0;}
+.profile_top .pf_head .user_atten li {padding: 0 3px 3px;float: left;border-right-width: 1px;border-right-style: solid;text-align: center;width: 53px;}
+.profile_top .pf_head .user_atten li.W_no_border {border: 0;}
+.profile_top .pf_head_pic .change_btn_div {position: absolute;text-align: right;right: 12px;bottom: 12px;}
+.W_btn_c {background-position: 0 -360px;display: inline-block;background: url("image/change.jpg") no-repeat;padding: 0 0 0 2px;height: 22px;line-height: 21px;}
+.W_btn_c, .W_btn_c span {min-width: 27px;text-align: center;padding: 0 9px 0 8px;white-space: nowrap;cursor: pointer;color: #333;}
+.profile-title .person-info-t {margin: 0;padding: 0;width: 490px}
+.profile-title .person-info-t dd {margin-left: 20px;}
+<?php 
+    if($preferences['position']==2){
+        echo '.person-info .person-info-t dd .name {position: absolute;top: 55px;left: 0;width: 50%;margin-left: 25%}';
+    }else if($preferences['position']==1){
+        echo '.person-info .person-info-t dd .name{position: absolute;top: 95px;left: 0%;width: 340px;margin-left: -80px}';
+    }else {
+        echo '.person-info .person-info-t dd .name{position: absolute;top: 95px;right: 0%;width: 340px;margin-right: -80px}';
+    }
+    ?>
+    .person-info .person-info-t dd .name a {font-size: 25px !important}
+<?php
+    if ($preferences['position']==2){
+        echo '.person-info .person-info-t dd .grade {position: relative;top: 0;left: 0;margin: 10px 0;text-align: left;font-size: 13px;width: 350px;line-height: 20px}';
+        echo 'span.cert_info {position: absolute;top: 115px;left: -360px;margin: 0;text-align: center;font-size: 12px;width: 280px;line-height: 20px;overflow: hidden}';
+        echo '.my-medal {display: block !important;position: absolute;top: 20px;left: 30px}';
+    } else if($preferences['position']==1){
+        echo '.person-info .person-info-t dd .grade{position: relative;top: -10px;left: 150px;margin: 10px 0;text-align: left;font-size: 13px;width: 350px;line-height: 20px}';
+        echo 'span.cert_info{position: absolute;top: 115px;left: -520px;margin: 0;text-align: left;font-size: 12px;width: 280px;line-height: 20px;overflow: hidden}';
+        echo '.my-medal{isplay: block !important;position: absolute;top: 0px;left: -150px}';
+    } else {
+        echo '.person-info .person-info-t dd .grade{position: relative;top: -10px;left: 420px;margin: 10px 0;text-align: left;font-size: 13px;width: 350px;line-height: 20px}';
+        echo 'span.cert_info {position: absolute;top: 115px;right: 190px;margin: 0;text-align: left;font-size: 12px;width: 280px;line-height: 20px;overflow: hidden}';
+        echo '.my-medal {display: block !important;position: absolute;top: 20px;left: -500px}';
+    }
+    ?>
+.cert_info {background: url('__THEME__/image/usergroup_icon.png') no-repeat;height: 23px;line-height: 24px;padding: 0 18px 0 36px;border-top-left-radius: 12px;border-bottom-left-radius: 12px;color: #666;border-bottom: 1px solid #FFF;overflow: hidden;}
+.v_01 {background-position: 0 -19px;border-bottom-color: #EA340F}
+.v_02 {background-position: 0 -50px;border-bottom-color: #FFB11F}
+.v_03 {background-position: 0 -82px;border-bottom-color: #4FAD66}
+.feed_txt_video {float: none !important}
+.right-box h3 {line-height: 35px}
+.profile-title .person-info-b {position: absolute;right: 20px;top: 20px;background: #fff;width: 280px;border: none !important}
+.pf_verified{text-align: left;}
+.pf_verified_info{margin-top: 10px;text-align: left;font-size: 14px;}
+.profile-title .person-info-t .tag-lists {overflow: hidden;white-space: normal;}
+.left {float: left;margin-top: 10px;}
+.profile-title .person-info {margin: 0 0 20px 0px;padding: 20px 20px 0 20px;position: relative;min-height: 150px;}
+.feed-search .ico-search {position: absolute;top: -5px;right: 5px;}
+.tab-menu ul li {width: 25%;padding: 0;}
+.tab-menu ul li a{width: 100%;font-size: 20px}
+.tab-menu ul .current a {background: none !important; color: #0096e6;border-bottom: 2px solid #0096e6}
+.tab-menu ul a:hover {color: #0096e6 !important}
+.content-bg {background: #FFF !important}
+.mod-feed-tab .inner-feed-nav li a {font-size: 14px}
+.mod-feed-tab .inner-feed-nav li.current a{border-bottom: 2px solid #0096e6}
+.right-box li{padding: 10px 15px;width: 30px;height: 80px}
+#blacklist dd{margin-left: 0 !important}
+/*勋章*/
+.person-info .person-info-b li {float: left;font-size: 14px;text-align: center;width: 30px;border-right: none;}
+.medal-info-s {height: 150px !important;padding: 20px !important;}
+.medal-info-s p {font-size: 12px !important;}
+.medal-info-s p a {display: inline-block;position: relative;color: #914BC5 !important;font-size: 13px !important;}
+.my-medal-list li {float: left;margin: 20px 10px 10px 0;border: none !important}
+.arrow-next-page, a:hover .arrow-next-page {background-position: -58px 0;width: 30px;height: 30px;cursor: pointer;margin: 22px 0 0 0;}
+.ts_confirm {clear: left;margin: 0;margin-top: -200px;margin-left: -220px;position: absolute;z-index: 9;text-align: center;background: url(../image/pagedarkbg.png) repeat 0 0;}
+.mod-data {font-size: 15px;line-height: 30px;margin: 5px 10px;}
+.profile-datalist {border-bottom: 1px solid rgba(155,155,155,0.5);margin-bottom: 20px;padding-bottom: 20px;}
+.profile-datalist h4{font-size: 17px;}
+.profile-datalist h4 a{color: #FFFFFF;padding: 1px 10px;background-color: #A88FCC;border-radius: 5px;-webkit-border-radius: 5px;}
+.profile-datalist ul.info {color: gray;margin: 10px;}
+.template_center {width: 30px;height: 30px;background: url("<?php echo $preferences['template']==1?ADDON_URL.'/plugin/BeautifyCenter/image/site-template.png':ADDON_URL.'/plugin/BeautifyCenter/image/site-template-right.png';?>") no-repeat 0 0; background-size: cover;display: block;position: absolute;top: 0;<?php echo $preferences['template']==1?'left:0px':'right:0px'; ?>}
+.template_center:hover {background-position: 0 -31px}
+#feed-lists {padding:15px 0 !important}
+#feed-list .feed-list {margin: 10px 0 !important}
+.feed_list .person-info .info-left {padding-left: 20px !important}
+.search-main .feed_list{margin: 15px 0 !important}
+.right-box a.face{width: 40px !important}
+.right-box a.face span{font-size: 12px !important}
+.right-box ul li .face img {width: 40px !important;height: 40px !important}
+.display_box{display: block; bottom: 0 !important;}
+.right-box .next-page.left {margin: 20px !important}
+.extend-foot #col3.st-index-right {display: none}
+.sperson-feedlist dt.face {left: -10px !important;top: -10px !important}
+</style>
+
+<div id="ts_ui_confirm" class="ts_confirm" style="top: 252px;left: 50%;margin-left: -115px;width: 230px;position: absolute;display:none"><div class="layer-mini-info"><dl><dt class="txt"><i class="ico-error"></i><?php if($preferences['consume_credit']==1){ echo '自定义封面将消耗'.$preferences['consume_quantity'].'点财富，确定使用？';}else{ echo '确定使用该图片？';} ?></dt><dd class="action"><a class="btn-green-small mr10 btn_ok" href="javascript:void(0)" onclick="return setSave();" id="true"><span>确定</span></a><a class="btn-cancel" href="javascript:void(0)" onclick="return setCancle();"><span>取消</span></a></dd></dl></div></div>
+<!-- 自定义封面 -->
+<style type="text/css">
+    .funBoxxx {text-align: center;background-color:transparent;}.loadingImage{width:100%;position:absolute;height:340px;left:0;top:0;bottom:0;text-align: center;filter: alpha(opacity=70);-moz-opacity: 0.7;opacity:0.7;background:#000
+    }.littleTips{position: absolute;left: 420px;cursor: move;background-color: #000;background: rgba(0,0,0,0.5);padding: 8px 20px;width: 120px;margin: 120px auto;color: #fff;border-radius: 3px;z-index: 99999;filter: progid:DXImageTransform.Microsoft.g}.ic{width: 16px;height: 16px;display: inline-block;font-size: 0;overflow: hidden;vertical-align: top;margin: 2px 3px 0 0;background: url(http://mat1.gtimg.com/www/mb/img/v2/b1_wide_2013_130718.png) no-repeat;_background-image: url(http://mat1.gtimg.com/www/mb/img/v2/b1_wide_2013_130718_ie6.png);background-position: -316px -96px;}
+</style>
+<div id="showCustom" style="display:none;">
+    <div class="funBoxxx" style="z-index:9999">
+        <a class="btn-green-small buttonObj" onclick="cSave();" style="margin: 10px;"><span>保存</span></a>
+        <a class="btn-green-small buttonObj" onclick="cNewDefault()" style="margin: 10px;padding:0 5px"><span>恢复默认</span></a>
+        <a class="btn-cancel buttonObj" onclick="hNewCancel();" href="javascript:;" style="margin: 10px;"><span>取消</span></a>
+        <a class="btn-green-small buttonObj" onclick="resetDefaultImg();" style="margin: 10px 10px 10px 120px; display:none;" id="resetImg"><span>重新选图</span></a>
+    </div>
+</div>
+
+<div id="pl_profile_cover">
+    <php>if(empty($beautifyCenter)){</php>
+    <div class="S_profile_pic profile_pic_top" node-type="cover" style="background-image:url(<?php echo ADDON_URL; ?>/plugin/BeautifyCenter/templates/images/019.jpg)" id="front_cover">
+    <php>if($preferences['sync_bg']){</php>
+    <script type="text/javascript">
+        $('#body-bg').attr('style','background: url(<?php echo ADDON_URL; ?>/plugin/BeautifyCenter/templates/full/019.jpg) no-repeat center center !important;background-attachment: fixed !important;background-size: cover !important;');
+    </script>
+    <php>}</php>
+    <php>}else{</php>
+    <div class="S_profile_pic profile_pic_top" node-type="cover" style="{$beautifyCenter.background}" id="front_cover">
+    <php>if($preferences['sync_bg']){</php>
+    <script type="text/javascript">
+        $('#body-bg').attr("style","{$beautifyCenter.full_background}");
+    </script>
+    <php>}</php>
+    <php>}</php>
+       <!-- 图片正在上传 -->
+        <span class="loadingImage" id="loadingImage" style="display:none">
+            <img src="http://mat1.gtimg.com/www/mb/images/loading.gif" style="margin-top:120px;">
+            <div style="padding-top:10px;font-size:14px;">图片上传中...</div>
+        </span>
+        <!-- 图片正在上传 -->
+
+        <!-- 拖拽提示 -->
+        <span class="littleTips" id="littleTips" style="display:none">
+            <div style="font-size:15px;">
+                <!-- <i class="ic ico_moveupdown"></i> -->
+                拖拽图片调整位置
+            </div>
+        </span>
+        <!-- 拖拽提示 -->
+        <php>if($mid == $uid){</php>
+        <a href="javascript:void(0);" class="template_center" onclick="cShowBox();" title="模板设置">       
+        <div class="template_enter">        
+        </div>
+        </a>   
+        <php>}</php>
+        <div id="change_style_box" style="display: none;z-index:100000">
+            <style type="text/css">
+            .changestylepop {background: none;width: 100%;position: fixed;z-index: 100000;left: 0px;bottom: -350px;overflow: hidden;border: 1px #111 solid;padding: 0px;box-shadow: 0 0 5px #888;-webkit-box-shadow: 0 0 15px #888;-khmtl-box-shadow: 0 0 15px #888;-zom-box-shadow: 0 0 15px #888;transition: all cubic-bezier(.49, .09, .43, 1.29) .3s;-webkit-transition: all cubic-bezier(.49, .09, .43, 1.29) .3s;-moz-transition: all cubic-bezier(.49, .09, .43, 1.29) .3s;-ms-transition: all cubic-bezier(.49, .09, .43, 1.29) .3s}
+                .D2{width:100%;height:100%;position:absolute;top:0;left:0;z-index:99}.DCont{background: rgba(15, 10, 15, 1)}.D2 .DCont.D2 .bg{background:#FFF;position:absolute;top:0;left:0;width:100%;height:100%;filter:alpha(opacity=0);-moz-opacity:0;opacity:0;-height:expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + "px")}.D2 iframe.cover_select{width:100%;height:100%;position:absolute;filter:alpha(opacity=0);-moz-opacity:0;opacity:0;z-index:-1;display:none;-display:}.D2 .DLoad{filter:alpha(opacity=50);-moz-opacity:0.5;opacity:0.5;position:absolute;z-index:5;background:url(http://mat1.gtimg.com/www/mb/images/loading.gif) #FFF 50% 50% no-repeat;}.D2 .CR{position:absolute;top:50%;left:50%;margin:0 0 0 -9999px}.D2 .DTitle{cursor:move;height:36px;overflow:hidden;padding-left:10px;font-size:14px;line-height:35px;font-weight:bold;border-bottom:1px solid #D5D5D5;background-position:0 -34px;background-repeat:repeat-x}.D2 .ico_skin{float:left;margin:9px 5px 0 0;_margin-right:0;background-position:0 -124px}.D2 .close{position:absolute;float:none;top:12px;right:12px;margin:0}.D2 .DWrap{width:586px;padding:1px;border:1px solid #7B828B;background:#fff;filter:progid:DXImageTransform.Microsoft.Shadow(color="#909090",Direction=135,Strength=4);-moz-box-shadow:2px 2px 5px #909090;-webkit-box-shadow:2px 2px 5px #909090}.D2 .pages{width:544px;margin:0 auto;padding:10px 5px 8px;border-bottom:1px dotted #C9C9C9}.D2 .pages .disabled{color:#999;cursor:default;text-decoration:none;background:none}.funBoxx{text-align:center;background-position:0 -75px;background-repeat:repeat-x}.funBoxx .btn-cancel span{padding:5px 12px;_margin:-1px 0 0 0;_height:15px;}.D2 .btn_save{margin-right:10px}#changestylemenu{position: absolute;width: 300px;height: 39px;margin-left: -150px;left: 50%}.DtabTitle{height:29px;padding-right:10px;*zoom:1;overflow:hidden;line-height:29px;background: rgba(238, 240, 235, 0.15) !important;position:relative;}.DtabTitle .ico-close{position:absolute;right:10px;top:6px;}.DtabTitle ul{float:left}.DtabTitle li{display:inline-block;float:left;margin-left:0px;border-width:0 1px;width: 120px;height: 39px}.DtabTitle li.select{cursor: pointer;padding:0 15px;background: none;color: #EEE;text-align: center}.DtabTitle li.current{background: rgba(15, 10, 15, 1)}.DtabTitle li a{display:block;padding:0 15px;}.DtempList{width:556px;height:188px;margin:10px 0 0 20px}.DtempList li{position:relative;float:left;width:129px;height:84px;margin:10px 10px 0 0;color:#fff;line-height:19px;text-align:center;cursor:pointer}.DtempList img{margin:1px;width:121px;height:76px;padding:2px;border:1px solid #DFDFDF}
+            .DtempList .tempName,.DtempList .mask{position:absolute;z-index:2;left:4px;bottom:4px;width:121px;height:19px}.DtempList .ico_lock{display:none;position:absolute;z-index:2;left:6px;top:6px;width:11px;height:16px;background-position:-20px -125px}.DtempList .mask{z-index:1;background:#000;filter:alpha(opacity:70);opacity:0.7}.DtempList li.hover img{border-color:#32A1CC}.DtempList .select img{margin:0;border:2px solid #32A1CC}.DtempList .locked img{border-color:#5F5F5F!important;background:#fff;filter:alpha(opacity:20);opacity:0.2}.DtempList .locked .ico_lock{display:block}.themeDiy{width:670px;height:213px;margin:20px auto 0;color:#999;}.themebgWrap{width: 670px;height: 203px;position: absolute;top: 50px;left: 50%;margin-left: -335px;pointer-events: auto;}.themebg_sel{position:relative;height:49px;padding:10px 8px;line-height:25px;background:#222;color:#EEE}.themebg_sel .inputTxt{width:200px;margin-left:-100px;left:50%;position:relative;z-index:1;cursor:pointer}.themebg_sel button{width:60px;height:21px;border:0;background-position:0 -145px}.selfilemask{position:absolute;z-index:100;width:20px;height:20px;overflow:hidden;*zoom:1;filter:alpha(opacity:0);opacity:0}.selfilemask input{position:absolute;right:0;height:21px;cursor:pointer}
+            .themebg_set{;margin:15px auto 0;padding:0 0 0 10px;}.themebg{float:left;position:relative;width:275px;height:83px;padding:2px;border:2px solid #32A1CC;overflow:hidden}.themebg .nobg{cursor:default;height:83px;color:#999;line-height:40px;text-align:center;background-color:#EFEFEF}.themebg .loading{padding-left:16px;background-position:20% 50%}.themebg .imgbg{width:250px;text-align:center;overflow:hidden}.themebg .imgbg img{height:60px;width: 250px;}.themebg .del{position:absolute;top:0;right:0;width:18px;height:18px;background-position:-35px -124px}.bgSetting{float:right;padding-top:38px;}.bgPosition{width:150px;height:22px;margin:5px 0;background-position:0 -168px;*margin:3px 0;}.bgPosition a{display:inline-block;width:35px;height:19px;padding-top:1px;margin:1px;color:#333;line-height:19px;text-align:center; vertical-align:middle;_margin:0 0 0 1px;_width:34px;}*+html .bgPosition a{margin:1px 0 0 1px;width:34px;}.bgPosition a:hover{text-decoration:none;background-color:#fdfdfd;color:#333;}.bgPosition a.select,.bgPosition a.select:hover{color:#fff;background-position:-64px -145px}.bgSetting label{margin-right:5px;white-space:nowrap;*margin:0;_margin-right:3px;}.bgSetting label input{vertical-align:-2px;margin:0 3px 0 0;*margin:0 0 0 -3px;_vertical-align:-1px;}.themecolorWrap{position:relative;min-height:203px;height:205px;width: 770px;float: left;overflow-y: scroll;background-color: #111;left: 50%;margin-left: -385px;}.themecolorWrap::-webkit-scrollbar {width: 5px}.themecolorWrap::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); -webkit-border-radius: 10px;border-radius: 10px}.themecolorWrap::-webkit-scrollbar-thumb {-webkit-border-radius: 10px;border-radius: 10px;background: rgb(239, 235, 235);-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5)}.themecolorWrap::-webkit-scrollbar-thumb:window-inactive {background: rgba(79, 173, 62, 0.4)}.themePreview{margin: 0;}.themecolorWrap h4{height:24px;padding-top:3px}/*.themePreview{float:left;}*/.themePreview a{position:relative;float:left;margin:0 0 5px 5px;border:2px solid #212;width:100px;height:75px;*z-index:9;}.themePreview a:hover,.themePreview a.current{border:2px solid #eb7350;}.themePreview a:hover > span{opacity: 0.8;}.themePreview a img{width:100px;height:75px;}.themePreview a span{position:absolute;background:#000;font-weight:normal;color:#fff;width:100px;height:22px;line-height:22px;text-align:center;display:block;bottom:0;left:0;opacity:0;filter:alpha(opacity=0);-moz-opacity:0;_bottom:-1px;}.D2 .colorBox{height:29px;padding-left:1px}.D2 .color{display:inline-block;width:16px;height:16px;padding:3px;background-position:0 -192px}.D2 .colorBox .select{position:relative;background-position:-24px -192px}.TpreviewBox{width:112px;height:110px;overflow:hidden;*zoom:1;padding:10px;border:1px solid #DFDFDF}.Tmain,.Tface{background:#fff url(http://mat1.gtimg.com/www/mb/images/skinFixmod.png) no-repeat}.Tmain{float:left;width:77px;height:110px;margin-right:-1px}.Tside{float:right;width:34px;height:110px;}.TUIn{width:28px;padding:6px 3px 2px;overflow:hidden;*zoom:1}.Tface{float:left;width:14px;height:14px;margin-bottom:4px;background-position:-81px 0}.Tnums{float:right;width:12px}.Tside .textColor{width:12px;height:3px;overflow:hidden;margin-bottom:1px;background:#9C000D}.Tside .linkColor{clear:both;width:50%;height:2px;overflow:hidden;margin-bottom:2px;background:#FFA869}.Tside .sepLine{height:0;overflow:hidden;border:1px solid;border-width:1px 0}.TsideMod{width:28px;margin:4px auto}.TsideMod .textColor{margin-bottom:3px}.TsideMod .linkColor{width:16px}.ThotList .SA{z-index:0;left:0;top:-5px;*top:-6px;_top:-5px}.ThotList .SA *{width:18px;height:5px}.ThotList .SA span{left:0;top:1px}.ThotList{margin-top:3px;height:12px}.palettelist{float:right;position:relative;width:108px;overflow:hidden}.paletteWrap{height:142px;width:1000px;overflow:hidden}.paletteWrap li{float:left;width:108px}.palettes,.palettes *{display:block;height:27px;overflow:hidden;}.palettes{position:relative;float:left;width:48px;padding:3px;margin:4px 0 10px;cursor:pointer}.palettes .c{float:left;width:8px}.palettes .mask{position:absolute;top:0;left:0;clear:both;width:54px;height:33px;background-position:0 -218px}.paletteWrap .select .mask{background-position:-56px -218px}.D2 .themeDiy .pages{position:absolute;right:4px;bottom:15px;clear:both;width:108px;height:16px;overflow:hidden;padding:0;border:none}.themeDiy .pages *{float:left;margin:0}.themeDiy .pages a{width:20px;height:16px;background-position:-74px -124px}.themeDiy .pages .btn_prev_disabled{background-position:-59px -124px;cursor:default}.themeDiy .pages .btn_next{background-position:-102px -124px}.themeDiy .pages .btn_next_disabled{background-position:-87px -124px;cursor:default}.themeDiy .pageInfo{width:68px;text-align:center}.themeHisWrap{position:absolute;left:15px;bottom:13px;*bottom:17px;height:24px;overflow:hidden;*zoom:1;line-height:25px}.themeHis{float:left;width:16px;height:16px;padding:2px;margin:1px 2px;overflow:hidden;border:1px solid #DFDFDF;background-position:center top;cursor:pointer}.themeHis .Tmain{filter:alpha(opacity=10);opacity:0.1;width:9px;height:16px;background:#fff}.themeHis .Tside{width:6px;height:16px}.themeHisWrap .select{margin:0 1px;border:2px solid #32A1CC}.colorPickerPosition{position:absolute;height:0;margin:-31px 0 0 -222px}
+            </style>
+
+<div class="changestylepop">
+     <div class="DWrap">
+        <div class="DLoad" style="width: 586px; height: 308px; display: none; "></div>
+        <div class="DCont" style="">
+            <div class="DtabTitle">
+                <a href="javascript:;" onclick="cCancel();" class="ico-close right"></a>
+                <ul id="changestylemenu">
+                    <li class="select current" onclick="tabSelect($(this))"><b>默认封面</b></li>
+                    <li class="select" onclick="tabSelect($(this))"><b>自定义上传</b></li>
+                </ul>
+                <span class="right"></span>
+            </div>
+            <div class="themeDiy" style="display:block;">
+               <div class="themebgWrap" style="display:none;">
+                    <div class="themebg_sel">
+                        <p>
+                            </p><form action="<?php echo Addons::createAddonUrl('BeautifyCenter','saveImageTemp'); ?>" enctype="multipart/form-data" method="post" id="uploadpic">
+                                <input type="file" class="inputTxt" hidefoucs="true" name="pic" onchange="cSetImage(this, this.value);">
+                            </form>
+                        <p></p>
+                        <p style="text-align:center">支持2M以内的gif、jpg、jpeg、png图片上传</p>
+                    </div>
+                    <br />
+                    <p style="text-align:center">图片最佳尺寸：980 * 300</p>
+                    <php>if($preferences['consume_credit']==1){</php>
+                    <p style="text-align:center">自定义上传将消耗<php>echo $preferences['consume_quantity']</php>积分</p>
+                    <php>}</php>
+                    <br />
+                    <p style="text-align:center">原始图片小于 980 * 300 尺寸的，将对其宽度扩大</p>
+                    <br />
+                    <p style="text-align:center">再按比例对高进行缩放（图片过小，失真效果明显）</p>
+                </div>
+                <div class="themecolorWrap">
+                    <div class="colorPickerPosition"></div>
+                    <div class="themecolor">
+                        <div class="themePreview">
+                            <div class="colorBox ">
+                                <!-- 系统封面 -->
+                                <volist name="homeStyle" id="hs">
+                                    <a rel="{$key}" href="javascript:;" onclick="cChange('{$key}',$(this));" class=''>
+                                        <img src="{$hs.thumb_url}" alt="{$hs.name}">
+                                        <span>{$hs.name}</span>
+                                    </a>
+                                </volist>
+                                
+                            </div>
+                            <div class="TpreviewBox" style=" float:left; margin-left:60px; display:none;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="funBoxx">
+                <a class="btn-green-small buttonObj" onclick="cSave();" style="margin: 10px;background:#2E3438;border:none"><span>保存</span></a>
+                <a class="btn-green-small buttonObj" onclick="cDefault()" style="margin: 10px;padding:0 5px;"><span>恢复默认</span></a>
+                <a class="btn-cancel buttonObj" onclick="cCancel();" href="javascript:;" style="margin: 10px;"><span>取消</span></a>                
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+    </div>
+</div>
+
+<div id="plc_profile_header">
+    <div class="profile_top S_bg5">
+        <div class="pf_head S_bg4 S_line1">
+        <div id="pl_profile_photo">
+            <div class="pf_head_pic" onmouseover="this.getElementsByTagName('div')[0].style.display=''" onmouseout="this.getElementsByTagName('div')[0].style.display='none';">
+                <a href="{:U('public/Account/avatar')}" title="点击修改头像" style="width: 100%;height: 100%;position: absolute;z-index: 9999">
+                <img src="{$user_info[$uid]['avatar_big']}" height="150" width="150" alt="{$user_info[$uid]['uname']}">
+                </a>
+            </div>
+            
+        </div>
+    </div>
+
+
+    <div class="person-info clearfix">
+    <dl class="person-info-t clearfix">
+        <dd>
+            <div class="name">
+                <strong><a href="{:U('public/Profile/index', array('uid'=>$uid))}">{$user_info[$uid]['uname']}</a></strong>
+                <div class="person-icon"><volist name="userGroupData[$user_info[$uid]['uid']]" id="vo">
+                <img style="width:auto;height:auto;display:inline;cursor:pointer;vertical-align:-2px;" src="{$vo['user_group_icon_url']}" title="{$vo['user_group_name']}" />&nbsp;
+                </volist>
+                <a href="{:U('public/Account/scoredetail')}" target="_blank"><img style="width:auto;height:auto;display:inline;cursor:pointer;vertical-align:0;" src="{$userCredit.level.src}" event-node='ico_level_right' /></a></div>
+
+            </div>
+            
+            <div class="grade"><if condition="$user_info[$uid]['sex'] eq 1"><i class="ico-male"></i><else /><i class="ico-female"></i></if>&nbsp;{$user_info[$uid]['location']}</div>
+            <php>if(!empty($user_info[$uid]['intro'])){</php>
+                <div class="grade">个人简介：{$user_info[$uid]['intro']|getShort=100}</div>
+            <php>}</php>
+            <php>if($sidebar['user_tag'][$uid]){</php>
+                <div class="grade tag-lists">
+                        个人标签：
+                        <volist name="sidebar['user_tag'][$uid]" id="u_t_v">
+                            <a href="{:U('public/Search/index',array('t'=>3,'a'=>'public','k'=>$u_t_v))}">{$u_t_v}</a>&nbsp;&nbsp;
+                        </volist>
+                    
+                </div>
+            <php>}</php>
+            
+            <div><p class="left">
+                <php>if($mid != $user_info[$uid]['uid'] && $mid){</php>
+                    {:W('FollowBtn', array('fid'=>$user_info[$uid]['uid'], 'uname'=>$user_info[$uid]['uname'], 'follow_state'=>$follow_state[$user_info[$uid]['uid']], 'isrefresh'=>1))}
+                    <php>if(CheckPermission('core_normal','send_message')){</php>
+                    <eq name='userPrivacy.message' value='0'>
+                    <a onclick="ui.sendmessage({$user_info[$uid]['uid']}, 0)" href="javascript:void(0)" event-node="postMsg" class="ml5 btn-cancel"><span>发私信</span></a>
+                    </eq>&nbsp;
+                    <php>}</php>
+                    <div class="more-box"><span class="ml5"><a href="javascript:;" event-node="more_operation" class="ml5">更多</a></span>
+                    <div id="more_operation" class="layer-list more-drop" style="display:none;">    
+                        <ul onmouseover="$('#more_operation').show();" onmouseout="$('#more_operation').hide()">
+                            <li id="blacklist">
+                                {:W('Blacklist',array('tpl'=>'btn', 'fid'=>$user_info[$uid]['uid'], 'isrefresh'=>1))}
+                            </li>
+                            <php>if($follow_state[$user_info[$uid]['uid']]['following'] == 1){
+                            </php>
+                                <li><a href="javascript:void(0)" onclick="setFollowGroup({$user_info[$uid]['uid']}, 1)">设置分组</a></li>
+                            <php>}</php>
+                        </ul>
+                    </div></div>
+
+                <php>}</php>
+            </p></div>
+            
+        </dd>       
+    </dl>
+    <php>if($sidebar['verifyInfo']){</php>
+    <dl class="person-info-b clearfix">
+        <php>if(!empty($sidebar['verifyInfo'])):</php>
+        <span class="cert_info v_01 left clearfix">认证：{$sidebar['verifyInfo']}</span>
+        <php>endif;</php>
+        {:W('MedalList',array('uid'=>$user_info[$uid]['uid']))}
+    </dl>   
+    <php>}else{</php>
+    <div class="person-info-b clearfix">
+    {:W('MedalList',array('uid'=>$user_info[$uid]['uid']))}
+    </div>
+    <php>}</php>
+
+<link href="<?php echo ADDON_URL; ?>/plugin/BeautifyCenter/css/cutImage.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo ADDON_URL; ?>/plugin/BeautifyCenter/js/cutImage.js"></script>
+<script type="text/javascript">
+// 事件监听
+M.addEventFns({
+    ico_level_right: {
+        load: function() {
+            var offset = $(this).offset();
+            var top = offset.top + 23;
+            var left = offset.left - 10;
+            var html = '<div id="layer_level_right" class="layer-open experience" style="display:none;z-index:999999;position:absolute;top:'+top+'px;left:'+left+'px;">\
+                        <dl>\
+                        <dd>{:L('PUBLIC_USER_LEVEL')}：{$userCredit.level.name}</dd>\
+                        <dd>{:L('PUBLIC_USER_POINTS_CALCULATION',array('num'=>$userCredit['credit']['experience']['value'],'experience'=>$userCredit['creditType'][$userCredit['level']['level_type']]))}</dd>\
+                        <dd class="textb">{:L('PUBLI_USER_UPGRADE_TIPS',array('num'=>$userCredit['level']['nextNeed'],'experience'=>$userCredit['creditType'][$userCredit['level']['level_type']]))}</dd>\
+                        </dl>\
+                        </div>';
+            $("body").append(html);
+
+            this._model = document.getElementById("layer_level_right");
+        },
+        mouseenter: function() {
+            $(this._model).css('display', 'block');
+        },
+        mouseleave: function() {
+            $(this._model).css('display', 'none');
+        }
+    },
+    ico_wallet_right: {
+        load: function() {
+            var offset = $(this).offset();
+            var top = offset.top + 23;
+            var left = offset.left - 20;
+            var html = '<div id="layer_wallet_right" class="layer-open scale" style="display:none;position:absolute;top:'+top+'px;left:'+left+'px;">\
+                        <dl>\
+                        <dt></dt>\
+                        <dd>{:L('PUBLIC_USER_POINTS_CALCULATION',array('num'=>intval($userCredit['credit']['score']['value']),'experience'=>$userCredit['creditType']['score']))}</dd>\
+                        </dl>\
+                        </div>';
+            $("body").append(html);
+            this._model = document.getElementById("layer_wallet_right");
+        },
+        mouseenter: function() {
+            $(this._model).css('display', 'block');
+        },
+        mouseleave: function() {
+            $(this._model).css('display', 'none');
+        }
+    },
+    more_operation: {
+        load: function() {
+            var offset = $(this).offset();
+            $('#more_operation').css({'left': 8 + 'px','top': 13 + 'px','padding-top': 0 + 'px', 'position':'absolute', 'width':'85px', 'z-index':5});
+        },
+        click: function() {
+            if($('#more_operation').css('display') == 'none') {
+                $('#more_operation').css('display', '');
+            } else {
+                $('#more_operation').css('display', 'none');
+            }
+            $('body').bind('click', function(event) {
+                if($(event.target).attr('event-node') != 'more_operation' && $(event.target).attr('id') != 'blacklist') {
+                    setTimeout("$('#more_operation').css('display', 'none')",500);
+                }
+            });
+        }
+    }
+}); 
+</script>
+
+<script type="text/javascript">
+var oldValue = $('#front_cover').attr('style');
+var homeStyle = <?php echo json_encode($homeStyle); ?>;
+
+// 选项卡切换
+function tabSelect(obj){
+    if(obj.hasClass('current')) return;
+    $('ul#changestylemenu .current').removeClass('current');
+    obj.addClass('current');
+    
+    $('.themecolorWrap').fadeToggle();
+    $('.themebgWrap').fadeToggle();
+}
+// 图片切换
+function cShowBox(){
+    $('#change_style_box').fadeIn();
+    $('.changestylepop').addClass('display_box')
+}
+// 取消操作
+function cCancel(){
+    $('#change_style_box').fadeOut();
+    $('.changestylepop').removeClass('display_box');
+    var newValue = $('#front_cover').attr('style');
+    if(newValue != oldValue){
+        window.location.href = window.location.href;
+    }
+}
+// 选中预览
+function cChange(id,obj){
+    for(var one in homeStyle) {
+        if(one == id) {
+            obj.addClass('current');
+        } else {
+            $('a[rel="'+one+'"]').removeClass('current');
+        }
+    }
+    var ifPreview = <?php echo $preferences['sync_bg']==1?'true':'false'; ?>;
+    if(id in homeStyle){
+        $('#nobg').show();   
+        $('#loading,#showImg').hide();
+        $('input[name=\'pic\']').val('');
+        $('#front_cover').attr('style',"background-image:url(<?php echo ADDON_URL; ?>/plugin/BeautifyCenter/templates/images/"+id+".jpg);");
+        if (ifPreview){
+             $('#body-bg').attr('style',"background-image:url(<?php echo ADDON_URL; ?>/plugin/BeautifyCenter/templates/full/"+id+".jpg);background-size:cover;background-attachment:fixed;");
+        }
+    }    
+}
+// 自定义封面
+function cSetImage(o,str){
+    $('#change_style_box').hide();
+    var cutImage = document.getElementById('cutImage');
+    if(cutImage){
+        document.getElementById('cutImage').parentNode.removeChild(document.getElementById('cutImage'));
+    }    
+    var d = /\.[^\.]+$/.exec(str).toString().toLowerCase();
+    if(d != '.jpg' && d != '.jpeg' && d != '.png' && d != '.gif') {
+        ui.error('仅支持【jpg,png,gif】后缀文件');
+        $(o).val('');
+    }else{
+        var options = {
+            success:function(txt){
+                if(txt.status == 1){
+                    imgCut1 = new ImgCut("front_cover",SITE_URL+'/'+txt.info,980,300,0,0);
+                    // 查看参数
+                    $("#lookParam").eq(0).click(function(){
+                        alert(
+                            '截图尺寸:'+imgCut1.CutW+'x'+imgCut1.CutH+
+                            '\n截图位置（相对于原始图左上角）:'+imgCut1.GetCutLeft()+','+imgCut1.GetCutTop()+
+                            '\n原始图当前尺寸:'+imgCut1.GetImgWidth()+"x"+imgCut1.GetImgHeight()
+                        );
+                    });
+                    $('#resetImg').show();
+                    $('#lookParam').show();
+                    $('#front_cover').show();
+                    $('#loadingImage').hide();
+                    $('#front_cover').attr('style','');
+                    $('#showCustom').show();
+                    $('#littleTips').show();
+                    is_upload=1;
+                }else{
+                    ui.error(txt.info);
+                    $('input[type="file"]').val('');
+                    $('#nobg').show();
+                    $('#loadingImage').hide();
+                }
+            },
+            dataType: 'json'
+        }
+        $('#uploadpic').ajaxSubmit(options); 
+        $('#nobg').hide();
+        $('#loadingImage').show();
+    } 
+}
+// 重置图片
+function resetDefaultImg(){
+    $('#littleTips').hide();
+    $('#showCustom').hide();
+    $('.imgCut1').hide();
+    $('#front_cover').attr('style',oldValue);
+    document.getElementById('cutImage').parentNode.removeChild(document.getElementById('cutImage'));
+    $('#change_style_box').show();
+    $('input[name=\'pic\']').val('');
+    is_upload=0;
+    delete imgCut1;
+}
+// 恢复默认
+function cDefault(){
+    $('#front_cover').attr('style',"background-image:url(<?php echo ADDON_URL; ?>/plugin/BeautifyCenter/templates/images/019.jpg);");
+    var thumb_url = $('#front_cover').attr('style');
+    $.post("<?php echo Addons::createAddonUrl('BeautifyCenter','beautifyCenterSave'); ?>",{thumb_url:thumb_url},function(res){
+        if(res == 1){
+            $('#change_style_box').fadeOut();
+            $('.changestylepop').removeClass('display_box');
+            ui.success('设置成功');
+        }
+    });
+}
+function cNewDefault(){
+    $('#littleTips').fadeOut();
+    $('#front_cover').attr('style',"background-image:url(addons/plugin/BeautifyCenter/themes/front/019.jpg);");
+    var custom = 0;
+    $.post("<?php echo Addons::createAddonUrl('BeautifyCenter','beautifyCenterSave'); ?>",{thumb_url:oldValue},function(res){
+        if(res == 1){
+            $('#showCustom').hide();
+            $('#change_style_box').hide();
+            document.getElementById('cutImage').parentNode.removeChild(document.getElementById('cutImage'));
+            delete imgCut1;
+            ui.success('设置成功');
+        }
+    });
+}
+// 保存
+function cSave(){
+    $('#littleTips').fadeOut();
+    // 当前封面图地址  
+    var thumb_url = $('#front_cover').attr('style');
+    var full = $('#body-bg').attr('style');
+    // 去除IE自动添加的双引号
+    var reg = new RegExp('"',"g");  
+    thumb_url = thumb_url.replace(reg, "");    
+    if(typeof(imgCut1) == 'undefined'){
+        var custome = '';
+    }else{
+        var custome = $('#temp_img').attr('src');    
+    }
+    // 保存系统封面
+    if(custome == ''){
+        if(thumb_url != oldValue){
+            var custom = 0;
+            $.post("<?php echo Addons::createAddonUrl('BeautifyCenter','beautifyCenterSave'); ?>",{thumb_url:thumb_url,full:full,custom:custom},function(res){
+                if(res == 1){
+                    $('#change_style_box').fadeOut();
+                    $('.changestylepop').removeClass('display_box');
+                    ui.success('设置成功！');
+                }else{
+                    ui.error('操作失败！');
+                    window.location.href = window.location.href;
+                }
+            });
+        }else{
+            $('#change_style_box').fadeOut();
+            $('.changestylepop').removeClass('display_box');
+            ui.error('封面图片未变动');
+        }
+    }else{
+        $('#ts_ui_confirm').show(); 
+    }
+}
+// 消耗财富操作
+function setSave(){
+    var thumb_url = $('#front_cover').attr('style');
+    var custom = 1;
+    var full = $('img.imgCut111').attr('src');
+    var full_style = "background: url("+full+") no-repeat center center !important;background-attachment: fixed !important;background-size: cover !important;";
+    // 截图位置起始位置
+    imgCut1.cutImgLeft = imgCut1.GetCutLeft();
+    imgCut1.cutImgTop = imgCut1.GetCutTop();
+    $.post("<?php echo Addons::createAddonUrl('BeautifyCenter','beautifyCenterSave'); ?>",{thumb_url:thumb_url,custom:custom,cutImgLeft:imgCut1.cutImgLeft,cutImgTop:imgCut1.cutImgTop,full:full_style},function(res){
+        if(res == 1){
+            $('#ts_ui_confirm').fadeOut(); 
+            $('#showCustom').hide();
+            ui.success('设置成功！');
+            window.location.href = window.location.href;
+        }else if(res == 2){
+            ui.error('财富值少于50点，操作失败！');
+            window.location.href = window.location.href;
+        }else{
+            ui.error('操作失败！');
+            window.location.href = window.location.href;
+        }
+    });
+}
+function setCancel(){
+    $('#ts_ui_confirm').hide();
+}
+    
+$('#searchfeed').addClass('searchform');
+</script>

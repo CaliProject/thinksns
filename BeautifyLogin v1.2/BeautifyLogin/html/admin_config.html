@@ -1,0 +1,48 @@
+<style>
+img{position: relative;width: 90%;height: auto;margin-right: 20px;border-radius: 10px;-webkit-border-radius: 10px;-moz-border-radius: 10px}
+</style>
+<link rel="stylesheet" media="screen" type="text/css" href="<php>echo SITE_URL</php>/addons/plugin/BeautifyUI/html/css/colorpicker.css" />
+<script type="text/javascript" src="<php>echo SITE_URL</php>/addons/plugin/BeautifyUI/html/js/colorpicker.js"></script>
+<script type="text/javascript" src="<php>echo SITE_URL</php>/addons/plugin/BeautifyUI/html/js/eye.js"></script>
+<script type="text/javascript" src="<php>echo SITE_URL</php>/addons/plugin/BeautifyUI/html/js/utils.js"></script>
+<script type="text/javascript" src="<php>echo SITE_URL</php>/addons/plugin/BeautifyUI/html/js/layout.js?ver=1.0.2"></script>  
+<div class="form2">
+    <form method="post" action="{:Addons::adminUrl('saveBeautifyLoginConfig')}">
+      <p>提示：登录页背景请前往『系统』->站点设置中修改</p>
+      <dl class="lineD">
+          <dt>字体颜色：</dt>
+          <input type="text" value="{$config['color']}" name="color" maxlength="6" class="colorpickerField">
+      </dl>
+       <dl class="lineD">
+        <dt>模板选择：</dt>
+        <dd>
+            <label><input type="radio" value="1" name="template" <php>if($config['template']==1){echo 'checked';}</php>>Zue 的模板</label>
+            <img src="<php>echo SITE_URL</php>/addons/plugin/BeautifyLogin/html/zue/img/zue.jpg" alt="Zue 的模板">
+        </dd>
+        <dd>
+            <label><input type="radio" value="2" name="template" <php>if($config['template']==2){echo 'checked';}</php>>Cali 的模板</label>
+            <img src="<php>echo SITE_URL</php>/addons/plugin/BeautifyLogin/html/cali/cali.png" alt="Cali 的模板">
+        </dd>
+      </dl>
+      <div class="page_btm">
+        <input type="submit" class="btn_b" value="确定" />
+      </div>
+    </form>
+  </div>
+<script type="text/javascript">
+$('.colorpickerField').ColorPicker({
+    onChange: function(hsb, hex, rgb, el){
+        $(el).val(hex);
+    },
+	onSubmit: function(hsb, hex, rgb, el) {
+		$(el).val(hex);
+		$(el).ColorPickerHide();
+	},
+	onBeforeShow: function () {
+		$(this).ColorPickerSetColor(this.value);
+	}
+})
+.bind('keyup', function(){
+	$(this).ColorPickerSetColor(this.value);
+});
+</script>
