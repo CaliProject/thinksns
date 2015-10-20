@@ -1,0 +1,98 @@
+<include file="__THEME__/public_header" />
+<style type="text/css">
+.help-banner {
+    width: 100%;
+    text-align: center;
+    height: 300px;
+    vertical-align: middle;
+    background: url(__APP__/images/banner.jpg) no-repeat 0 0;
+    margin: 20px 0;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px
+}
+.nav_title b{
+    background: url(__APP__/images/nav_title_bg.png) no-repeat;
+    margin-left: -47px;
+    position: absolute;
+    vertical-align: top;
+    height: 50px;
+    width: 40px
+}
+</style>
+<div id="page-wrap">
+  <div id="main-wrap">
+    <div class="app-title clearfix">
+         <div class="help-banner">
+            <img src="__APP__/images/help.png" alt="Help">
+             <h3>帮助中心</h3>
+         </div>
+    </div>
+    <div class="help_left_nav clearfix">
+      {:W('LeftNavMenu', array('cid'=>$cid, 'title'=>$_title, 'helpCategory'=>$helpCategory))}
+    </div>
+    <div class="help_content">
+       <php>$cateHasSub = hasSubcategory(intval($cid));</php>
+        <h3><neq name="isIndex" value="true"><a href="{:U('help/Index/index')}">帮助中心&nbsp; &gt; </a><neq name="cateHasSub" value="false">
+            <php>$parentLink = getParentCate($cid)</php>
+            {$parentLink}&nbsp;
+        </neq>&nbsp;</neq>{$_title}</h3>
+        <eq name="isIndex" value="true">
+            <div class="section">
+            <volist name="masterCate" id="v">
+                <h3>
+                    {$v.title}
+                </h3>
+                <php>$sub = getSubcategory($v['id'])</php>
+                
+                     <volist name="sub" id="s">
+                       <ul class="sub_category">
+                        <li>{$s.title}</li>
+                        <div class="help-list">
+                            <php>$list = getHelpListByCateId(intval($s['cid']))</php>
+                            <ul>
+                            <foreach name="list" item="k">
+                                <li>{$k.title}</li>
+                            </foreach>
+                            </ul>
+                        </div>
+                        </ul>
+                    </volist>
+            </volist>
+        </div>
+        <else />
+        <php>$hasSub = hasSubcategory(intval($cid));</php>
+        <eq name="hasSub" value="false">
+            <php>$sub = getSubcategory($cid)</php>
+             <volist name="sub" id="s">
+               <ul class="sub_category">
+                <li>{$s.title}</li>
+                <div class="help-list">
+                    <php>$list = getHelpListByCateId(intval($s['cid']))</php>
+                    <ul>
+                    <foreach name="list" item="k">
+                        <li>{$k.title}</li>
+                    </foreach>
+                    </ul>
+                </div>
+                </ul>
+            </volist>
+        <else />
+            <div class="help-list">
+               <ul>
+                <php>$list = getHelpListByCateId($cid)</php>
+                <foreach name="list" item="k">
+                    <li>{$k.title}</li>
+                </foreach>
+                </ul>
+            </div>
+        </eq>
+        </eq>
+    </div>
+    
+   </div>
+</div>
+<script src="__APP__/help.js"></script>
+<include file="__THEME__/public_footer" />

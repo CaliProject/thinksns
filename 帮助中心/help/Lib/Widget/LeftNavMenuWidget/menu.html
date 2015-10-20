@@ -1,0 +1,40 @@
+<div id="help_nav">
+    <div class="clearfix">
+       
+            <volist name="helpCategory" id="cate">
+            <eq name="cate.pid" value="0">
+                <dl class="<?php if($cid == $cate['help_category_id']){echo 'current';} ?>">
+                <b></b>
+                <php>$hasSub = hasSubcategory(intval($cate['help_category_id']));</php>
+                    <div class="nav_title">
+                       <b></b>
+                        <span>{$cate.title|getShort=10}</span>
+                    </div>
+                    
+                        <php>
+                            $cid = intval($cate['help_category_id']);
+                            $sub = getSubcategory($cid);
+                        </php>
+                        <foreach name="sub" item="item">
+                           <div class="sub-cate">
+                            <dt>
+                                <div>
+                                    <b></b>{$item.title}
+                                </div>
+                            </dt>
+                                <php>
+                                    $contentList = getContentList($item['cid']);
+                                </php>
+                                <dd>
+                                    <volist name="contentList" id="li">
+                                        {$li.title}
+                                    </volist>
+                                </dd>
+                            </div>
+                        </foreach>
+                        
+            </dl>
+            </eq>
+            </volist>
+    </div>
+</div>

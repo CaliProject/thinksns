@@ -1,0 +1,66 @@
+  <div class="form2">
+    <form method="post" action="{:Addons::adminUrl('saveBeautifyCenterConfig')}">
+      <dl class="lineD">
+        <dt>个人主页头像位置：</dt>
+        <dd>
+            <label><input type="radio" name="position" value="1" <php>if($config['position']==1){</php>checked<php>}</php>/>左侧</label>
+         <label><input type="radio" name="position" value="2" <php>if($config['position']==2 || empty($config['position'])){</php>checked<php>}</php>/>居中</label>
+         <label><input type="radio" name="position" value="3" <php>if($config['position']==3){</php>checked<php>}</php>/>右侧</label>
+        </dd>
+      </dl>
+      <dl class="lineD">
+        <dt>更换模板按钮位置：</dt>
+        <dd>
+        <label for="template"><input type="radio" name="template" value="1" <php>if($config['template']==1 || empty($config['template'])){</php>checked<php>}</php>/>左侧</label>
+         <label for="template"><input type="radio" name="template" value="2" <php>if($config['template']==2){</php>checked<php>}</php>/>右侧</label>
+        </dd>
+      </dl>
+      <dl class="lineD">
+        <dt>是否同步切换背景：</dt>
+        <dd>
+          <label><input type="checkbox" name="sync_bg" value="1" <php>if($config['sync_bg']==1) echo 'checked';</php>/>同步</label>
+          <br />
+          <p>默认切换模板同步切换背景图，如果希望取消请选择</p>
+        </dd>
+      </dl>
+      <dl class="lineD">
+          <dt>是否自定义上传消耗积分：</dt>
+          <dd>
+              <label><input id="consume_c" type="checkbox" name="consume_credit" onclick="check_consume($(this))" <php>if($config['consume_credit']==1)echo 'checked'; </php>/>消耗</label>
+                <br />
+                <input id="consume_q" type="number" name="consume_quantity" placeholder="消耗多少积分..." value="<?php echo $config['consume_quantity'];?>" <?php if($config['consume_credit']==0) echo 'disabled'; ?>/>
+          </dd>
+      </dl>
+      <div class="page_btm">
+        <input class="btn_b" value="确定" onclick="check_submit()" />
+      </div>
+    </form>
+  </div>
+<script type="text/javascript">    
+if ($('#consume_c').attr('checked')=='checked'){
+    $('#consume_q').attr('disabled','false');
+}
+
+function check_consume(obj){
+    var isChecked = obj.attr('checked');
+    $('#consume_q').attr('disabled',!isChecked);
+}
+ 
+function check_submit(){
+    var num = $('input#consume_q').val();
+    s = trim(num);
+    var p =/^[1-9](\d+(\.\d{1,2})?)?$/; 
+    var p1=/^[0-9](\.\d{1,2})?$/;
+    isNumber =  p.test(s) || p1.test(s);
+   
+    if (isNumber){
+        submitForm();
+    } else {
+        alert('消耗积分必须是数字!');
+    }
+}
+    
+function submitForm(){
+    $('.form2 form').submit();
+}
+</script>

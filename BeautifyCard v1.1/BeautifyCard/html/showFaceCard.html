@@ -1,0 +1,151 @@
+<style>
+.card-bg {width: calc(100% + 1.5px);height: 121px;position: absolute;top: 0;left: 0px;z-index: 2;overflow: hidden}
+.card-bg .overlay-container {background: <php>if($config['color']==1){echo 'rgba(255,255,255,0.35)';}else{echo 'rgba(0,0,0,0.25)';}</php>;position: absolute;left: 0;top: 0;z-index: 2;width: 100%;height: 100%}
+.card-bg .blur-container {width: 100%;height: 100%;position:absolute;top: 0;left: 0;z-index: 1;filter: blur(12px);-webkit-filter: blur(12px);-moz-filter: blur(12px);-ms-filter: blur(12px);transform: scale3d(1.05, 1.05, 1);-webkit-transform: scale3d(1.05, 1.05, 1);-moz-transform: scale3d(1.05, 1.05, 1);transition: all ease-in-out .6s;-webkit-transition: all ease-in-out .6s;-moz-transition: all ease-in-out .6s;-ms-transition: all ease-in-out .6s;animation: zoomCardBg 6s ease alternate;-webkit-animation: zoomCardBg 6s ease alternate;-moz-animation: zoomCardBg 6s ease alternate;-ms-animation: zoomCardBg 6s ease alternate;-o-animation: zoomCardBg 6s ease alternate}
+.card-bg .blur-container .beautify-center-bg {<php>if($config['isSync']!=1){echo 'background: url('.$userInfo['avatar_original'].') no-repeat center center';}else{echo empty($beautifyCenter['background'])?'background-image: url('.SITE_URL.'/addons/plugin/BeautifyCenter/templates/images/019.jpg)':$beautifyCenter['background'];}</php>;background-size: cover;-webkit-background-size: cover;-moz-background-size: cover;-ms-background-size: cover;-o-background-size: cover;width: 100%;height: 100%}
+.name-card {width: 400px;}
+.name-card .name {padding: 15px 15px 20px 10px;position: relative;top: 0;left: 0;z-index: 3}
+.name-card .name dd.lh22 , .name-card .name dd.lh22 a ,.name- card .name dd.lh22 em {color: #FFF;font-weight: bold}
+.name-card .name dd.lh22 .vline {color: #e6e6e6}
+.name-card .name dt img {width: 70px;height: 70px;border: 3px solid rgba(250,250,250,0.35);position: relative;top: 8px}
+.name-card .name dd {margin: 10px 0 0 10px}
+.name-card .name dd p {width: auto}
+.name-card .info {margin-top: 15px}
+.name-card .tag .tag-inner li {display: inline}
+.name-card .links {background: transparent !important;height: auto}
+.card-links {display: block;width: 270px;height: 100%;position: relative;left: 50%;margin-left: -135px;padding: 10px}
+.card-links .btns-gray {box-shadow: 0 1px rgba(0, 0, 0, 0.25);border: 1px solid rgba(5, 5, 5, 0.1);border-radius: 5px}
+.card-links > a {display: inline-block;width: 80px;height: 30px;background: #fff;border-radius: 5px;text-align: center;vertical-align: middle;line-height: 30px;margin-bottom: 3px;margin-left: 5px;box-shadow: 0 1px rgba(0, 0, 0, 0.25);border: 1px solid rgba(5, 5, 5, 0.1)}
+.card-links > a:hover {box-shadow: 0 1px  5px rgba(0, 0, 0, 0.25);border: 1px solid rgba(5, 5, 5, 0.3)}
+@keyframes zoomCardBg {
+    from {
+        transform: scale3d(1.35,1.35,1);
+        -webkit-transform: scale3d(1.35,1.35,1);
+        -moz-transform: scale3d(1.35,1.35,1);
+        -ms-transform: scale3d(1.35,1.35,1);
+    }
+    to {
+        transform: scale3d(1.05,1.05,1);
+        -webkit-transform: scale3d(1.05,1.05,1);
+        -moz-transform: scale3d(1.05,1.05,1);
+        -ms-transform: scale3d(1.05,1.05,1);
+    }
+}
+@-webkit-keyframes zoomCardBg {
+    from {
+        transform: scale3d(1.35,1.35,1);
+        -webkit-transform: scale3d(1.35,1.35,1);
+        -moz-transform: scale3d(1.35,1.35,1);
+        -ms-transform: scale3d(1.35,1.35,1);
+    }
+    to {
+        transform: scale3d(1.05,1.05,1);
+        -webkit-transform: scale3d(1.05,1.05,1);
+        -moz-transform: scale3d(1.05,1.05,1);
+        -ms-transform: scale3d(1.05,1.05,1);
+    }
+}
+@-moz-keyframes zoomCardBg {
+    from {
+        transform: scale3d(1.35,1.35,1);
+        -webkit-transform: scale3d(1.35,1.35,1);
+        -moz-transform: scale3d(1.35,1.35,1);
+        -ms-transform: scale3d(1.35,1.35,1);
+    }
+    to {
+        transform: scale3d(1.05,1.05,1);
+        -webkit-transform: scale3d(1.05,1.05,1);
+        -moz-transform: scale3d(1.05,1.05,1);
+        -ms-transform: scale3d(1.05,1.05,1);
+    }
+}
+</style>
+<!-- Beautify Card -->
+<div class="card-bg">
+   <div class="overlay-container"></div>
+    <div class="blur-container">
+        <div class="beautify-center-bg"></div>
+    </div>
+</div>
+<dl class="name clearfix">
+   	<dt><a href="{$userInfo.space_url}" target="_blank"><img src="{$userInfo.avatar_middle}" /></a></dt>
+       <dd class="lh22">
+           <p style="font-size:14px;padding-bottom:6px;"><a href="{$userInfo.space_url}" target="_blank">{$userInfo.uname}</a>
+            <volist name="userInfo['groupData'][$userInfo['uid']]" id="v2">
+              <img style="width:auto;height:auto;display:inline;cursor:pointer" src="{$v2['user_group_icon_url']}" title="{$v2['user_group_name']}" />&nbsp;
+            </volist>
+            <a href="{:U('public/Index/scoredetail')}" target="_blank"><img src="{$userInfo.credit_info.level.src}" title='{$userInfo.credit_info.level.name}'></a>
+           <span>	
+           <eq name='follow_state.following' value='1'>
+        	{:W('Remark',array('uid'=>$uid,'remark'=>$remarkHash[$uid]))}
+        	</eq>
+        	</span></p>
+        	<php>if(CheckPermission('core_normal','read_data')){</php>
+          <div class="grade"><if condition="$userInfo['sex'] eq 1"><i class="ico-male"></i><else /><i class="ico-female"></i></if>&nbsp;{$userInfo['location']}</div>
+          <php>}</php>
+           <div>
+               <ul class="userdata clearfix">
+                   <li><a href="{:U('public/Profile/following',array('uid'=>$uid))}" target="_blank">{:L('PUBLIC_FOLLOWING')}</a> {$count_info.following_count|default=0}</li>
+                   <li class="vline">|</li>
+                   <li><a href="{:U('public/Profile/follower',array('uid'=>$uid))}" target="_blank">{:L('PUBLIC_FOLLOWERS')}</a> {$count_info.follower_count|default=0}</li>
+                   <li class="vline">|</li>
+                   <li><a href="{$userInfo.space_url}" target="_blank">{:L('PUBLIC_WEIBO')}</a> {$count_info.weibo_count|default=0}</li>
+               </ul>
+           </div>
+           <p class="address">{$department.title}</p>
+       </dd>
+   </dl>
+<dl class="info clearfix lh22">
+   <!-- Verification  Start -->
+  <php>if($verifyInfo){</php>
+    <dd class="tag"><span>认证：</span>
+     <div class="tag-inner">{$verifyInfo}</div>
+    </dd>   
+  <php>}</php>
+  <!-- Verification  End -->
+  <php>if(CheckPermission('core_normal','read_data')){</php>
+	  <neq name='user_tag' value=''>
+    <dd class="tag"><span>标签：</span>
+      <div class="tag-inner">
+        <volist name="user_tag" id="v">
+          <a href="{:U('people/Index/index', array('cid'=>$key))}">{$v}</a>
+        </volist>
+      </div>
+    </dd>
+    </neq>
+   		<neq name='userInfo.intro' value=''>
+        <dd class="tag"><span>简介：</span>
+         <div class="tag-inner">{$userInfo['intro']|getShort=60,'...'}</div>
+        </dd>   
+    </neq>
+       <php>if($config['showMedals']==1 && !empty($userInfo['medals'])){</php>
+        <neq name='userInfo.medals' value=''>
+            <dd class="tag"><span>勋章：</span>
+                <div class="tag-inner"><php>$userInfo['medals'] = array_slice($userInfo['medals'], 0, 5);</php>
+                <volist name="userInfo.medals" id="vo">
+                  <li style="padding-right:5px;"><img  src="{$vo.src}" width="30" height="30"/></li>
+                </volist>
+                <li><a href="{:U('public/Medal/index')}" title="查看更多徽章"><img src="__APP__/image/task/medal-more.png" width="30" height="30" /></a></li>
+                </div>
+            </dd>
+        </neq>
+        <php>}</php>
+<php>}</php>
+</dl>
+<dl class="links">
+      <div class="card-links">
+        {:W('FollowBtn', array('fid'=>$uid, 'uname'=>$userInfo['uname'], 'follow_state'=>$follow_state, 'type'=>'normal'))}
+       
+   	<a href="javascript:ui.sendat({$uid})">@TA</a>
+   	<php>if(CheckPermission('core_normal','send_message')){</php>
+      <eq name='UserPrivacy.message' value='0'>
+      <a href="javascript:ui.sendmessage({$uid}, 0)">{:L('PUBLIC_SEND_PRIVATE_MESSAGE')}</a>
+      </eq>
+      <php>}</php>
+   	<!-- <span class="vline">|</span><span><em class="icons ico_set"></em>
+   </span> -->
+    </div>
+   </dl>
+<script>
+	M(document.getElementById('face_card'));
+</script>
